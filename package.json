@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "build": "webpack -d --watch",
-    "db:seed": "node server/db/seed.js",
+    "db:seed": "node --max-old-space-size=8192 server/db/seed.js",
     "test": "jest"
   },
   "dependencies": {
@@ -34,8 +34,6 @@
   },
   "homepage": "https://github.com/hrr42-fec5/service-allen#readme",
   "devDependencies": {
-    "eslint": "^6.7.2",
-    "eslint-plugin-react": "^7.17.0",
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
@@ -44,6 +42,8 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-react": "^7.17.0",
     "faker": "^4.1.0",
     "jest": "^24.9.0",
     "nodemon": "^2.0.1",
