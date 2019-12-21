@@ -2,13 +2,16 @@
 
 > Project description
 
-## Related Projects
+## CRUD API:
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+Post(Create): api/image/restaurantId
 
+Get(Read): api/image/restaurantId
+
+Put(Update): api/image/restaurantId
+
+Delete(Delete): api/image/restaurantId
+  
 ## Table of Contents
 
 1. [Usage](#Usage)

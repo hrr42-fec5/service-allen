@@ -221,6 +221,7 @@ class App extends Component {
     const urlString = window.location.href;
     const url = new URL(urlString);
     const restaurantID = url.searchParams.get('restaurantID');
+    console.log("restaurant ID" + restaurantID);
 
     axios.get(`/api/images/${restaurantID}`)
       .then(res => {
