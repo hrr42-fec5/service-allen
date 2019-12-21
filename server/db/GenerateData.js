@@ -13,6 +13,7 @@ const FileToAdder = {
 
 const CreateCSV = (fileName, chunkSize = 2500001, numChunks = 10) => { // Default chunk is 1mil, default numChunks is 10
   const Writer = fs.createWriteStream(path.join(__dirname,`/seedData/${fileName}.csv`));
+  Writer.write('id,images,name\n', 'utf8');
   const Write = () => {
   let ok = true;
   do {
@@ -24,9 +25,8 @@ const CreateCSV = (fileName, chunkSize = 2500001, numChunks = 10) => { // Defaul
     }
     chunkSize--;
     let i = chunkSize + FileToAdder[fileName] + 1;
-
     if(chunkSize === 0) {
-      Writer.write(`${i},"[${photos}]",${faker.lorem.word()}\n`, 'utf8');
+      Writer.write(`${i},${photos},${faker.lorem.word()}\n`, 'utf8');
       if(fileName === "data-4") {
         let endTime = new Date().getTime();
         let msElapse = endTime-startTime;
