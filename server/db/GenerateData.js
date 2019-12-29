@@ -16,31 +16,31 @@ const CreateCSV = (fileName, chunkSize = 2500001, numChunks = 10) => { // Defaul
   Writer.write('id,images,name\n', 'utf8');
   const Write = () => {
   let ok = true;
-  do {
-    const numPhotos = Math.floor(Math.random() * (20 - 10)) + 10;
-    let photos = [];
-    for(let i = 0; i < numPhotos; i++) {
-      const photo = images[Math.floor(Math.random() * (1008 - 0)) + 0]
-      photos.push(photo);
-    }
-    chunkSize--;
-    let i = chunkSize + FileToAdder[fileName] + 1;
-    if(chunkSize === 0) {
-      Writer.write(`${i},${photos},${faker.lorem.word()}\n`, 'utf8');
-      if(fileName === "data-4") {
-        let endTime = new Date().getTime();
-        let msElapse = endTime-startTime;
-        let timeElapse = new Date(msElapse).toISOString().slice(14, -1);
-        console.log(`[DataGen] Data generation complete in ${timeElapse} (mm:ss:mss)`);
+    do {
+      const numPhotos = Math.floor(Math.random() * (20 - 10)) + 10;
+      let photos = [];
+      for(let i = 0; i < numPhotos; i++) {
+        const photo = images[Math.floor(Math.random() * (1008 - 0)) + 0]
+        photos.push(photo);
       }
-    } else {
-      ok = Writer.write(`${i},"[${photos}]",${faker.lorem.word()}\n`, 'utf8');
+      chunkSize--;
+      let i = chunkSize + FileToAdder[fileName] + 1;
+      if(chunkSize === 0) {
+        Writer.write(`${i},${photos},${faker.lorem.word()}\n`, 'utf8');
+        if(fileName === "data-4") {
+          let endTime = new Date().getTime();
+          let msElapse = endTime-startTime;
+          let timeElapse = new Date(msElapse).toISOString().slice(14, -1);
+          console.log(`[DataGen] Data generation complete in ${timeElapse} (mm:ss:mss)`);
+        }
+      } else {
+        ok = Writer.write(`${i},"[${photos}]",${faker.lorem.word()}\n`, 'utf8');
+      }
+    } while (chunkSize > 0 && ok);
+    if(chunkSize > 0) {
+      Writer.once('drain', Write);
     }
-  } while (chunkSize > 0 && ok);
-  if(chunkSize > 0) {
-    Writer.once('drain', Write);
   }
-}
 
   Write();
 }
