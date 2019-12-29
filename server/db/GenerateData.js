@@ -15,7 +15,7 @@ const CreateCSV = (fileName, chunkSize = 2500001, numChunks = 10) => { // Defaul
   const Write = () => {
   let ok = true;
   do {
-    const numPhotos = Math.floor(Math.random() * (20 - 10)) + 10;
+    const numPhotos = Math.floor(Math.random() * (15 - 7)) + 7;
     let photos = [];
     for(let i = 0; i < numPhotos; i++) {
       const photo = images[Math.floor(Math.random() * (1008 - 0)) + 0]
