@@ -4,10 +4,14 @@
   "author": "Allen Tsai",
   "license": "ISC",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node server/server.js",
+    "devstart": "nodemon server/server.js",
     "build": "webpack -d --watch",
     "generateData": "node server/db/GenerateData.js",
     "test": "jest"
+  },
+  "files.watcherExclude" : {
+    "*.csv": true
   },
   "dependencies": {
     "axios": "^0.19.0",
