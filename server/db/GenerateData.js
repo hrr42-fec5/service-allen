@@ -52,7 +52,7 @@ let startTime;
   const response = await prompts({
     type:'text',
     name:'select',
-    message:"Welcome to Micah's DataGen Script. \nThis script is split into two parts, both consisting of 5 million entries split into two files.\n Please type 'full' to generate all 10 million, \n'first' for first 5 million (data-1,data-2),\nor 'last' for last 5 million (data-3,data-4).\n"
+    message:"Welcome to Micah's DataGen Script. \nOptions:\n   1. 'full' - Generates 10 million entries (data 1-4)\n   2. 'first' - Generates 5 million entries (data 1-2)\n   3. 'last' - Generates 5 million entries (data 3-4)\n"
   });
   if(response.select == 'full') {
     startTime = new Date().getTime();
@@ -71,6 +71,8 @@ let startTime;
     console.log("[DataGen] Beginning data generation");
     CreateCSV('data-3', false);
     CreateCSV('data-4', true);
+  } else {
+    console.log("Invalid Entry: Exiting");
   }
 })();
 
