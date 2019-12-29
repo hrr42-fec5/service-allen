@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "build": "webpack -d --watch",
-    "generateData": "node --max-old-space-size=8192 server/db/GenerateData.js",
+    "generateData": "node server/db/GenerateData.js",
     "test": "jest"
   },
   "dependencies": {

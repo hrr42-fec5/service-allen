@@ -1,5 +1,4 @@
 const fs          = require('fs'),
-      stringify   = require('csv-stringify'),
       path        = require('path'),
       faker       = require('faker'),
       images      = require('./images');
